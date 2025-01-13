@@ -21,6 +21,26 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
+# Endpoint: Add New User
+@app.route('/add_user', methods=['POST'])
+def add_user():
+    try:
+        data = request.get_json()
+        name = data.get("name")
+        email = data.get("email")
+        age = data.get("age")
+
+        if not name or age is None:
+            return jsonify({"error": "Name and age are required"}), 400
+
+        new_user = User(name=name, email=email, age=age)
+        db.session.add(new_user)
+        db.session.commit()
+
+        return jsonify({"message": "User added successfully", "user_id": new_user.user_id}), 201
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 # Endpoint: Retrieve Total Spending by User
 @app.route('/total_spent/<int:user_id>', methods=['GET'])
 def get_total_spending(user_id):
@@ -28,7 +48,7 @@ def get_total_spending(user_id):
     if not user:
         return jsonify({"error": "User not found"}), 404
 
-    total_spending = db.session.query(db.func.sum(Spending.amount)).filter_by(user_id=user_id).scalar()
+    total_spending = db.session.query(db.func.sum(Spending.money_spent)).filter_by(user_id=user_id).scalar()
     return jsonify({"user_id": user_id, "total_spending": total_spending or 0}), 200
 
 # Endpoint: Calculate Average Spending by Age Ranges
@@ -45,7 +65,7 @@ def average_spending_by_age():
     averages = {}
     for age_range, (min_age, max_age) in age_ranges.items():
         avg_spending = (
-            db.session.query(db.func.avg(Spending.amount))
+            db.session.query(db.func.avg(Spending.money_spent))
             .join(User)
             .filter(User.age.between(min_age, max_age))
             .scalar()
