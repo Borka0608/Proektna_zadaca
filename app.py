@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from extensions import db
 from models import User, Spending
 from pymongo import MongoClient
+import requests  # To make HTTP requests to Telegram API
 
 app = Flask(__name__)
 
@@ -20,6 +21,19 @@ db.init_app(app)
 # Create tables at startup
 with app.app_context():
     db.create_all()
+
+# Telegram Bot Configuration
+TELEGRAM_BOT_TOKEN = 'your_telegram_bot_token_here'
+TELEGRAM_CHAT_ID = 'your_chat_id_here'
+
+def send_to_telegram(message):
+    """
+    Sends a message to a specific Telegram chat.
+    """
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message}
+    response = requests.post(url, json=payload)
+    return response.json()
 
 # Endpoint: Add New User
 @app.route('/add_user', methods=['POST'])
@@ -72,10 +86,18 @@ def average_spending_by_age():
         )
         averages[age_range] = avg_spending or 0
 
-    # (Optional) Send results to Telegram using a bot (requires additional setup)
-    # send_to_telegram(averages)
+    # Prepare message for Telegram
+    message = "📊 Average Spending by Age Range:\n"
+    for age_range, avg_spending in averages.items():
+        message += f"- {age_range}: ${avg_spending:.2f}\n"
 
-    return jsonify({"average_spending_by_age": averages}), 200
+    # Send message to Telegram
+    telegram_response = send_to_telegram(message)
+
+    return jsonify({
+        "average_spending_by_age": averages,
+        "telegram_status": telegram_response
+    }), 200
 
 # Endpoint: Write User Data to MongoDB
 @app.route('/write_to_mongodb', methods=['POST'])
