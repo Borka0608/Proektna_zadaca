@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b93cf116-234e-4ab8-b28a-70a02878995e" name="Changes" comment="third commit">
+    <list default="true" id="b93cf116-234e-4ab8-b28a-70a02878995e" name="Changes" comment="Se dodavaat extension, models test, i checkMongo na Git. Aplikacijata e razviena do povrzuvanje so Telegram">
+      <change afterPath="$PROJECT_DIR$/test_app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/users_vouchers.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/users_vouchers.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +51,7 @@
     &quot;Python tests.Python tests for app.TestUserSpendingAPI.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests for app.TestUserSpendingAPI.test_total_spent.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests in app.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_app.py.executor&quot;: &quot;Run&quot;,
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
     &quot;Python.checkMongoConnection.executor&quot;: &quot;Run&quot;,
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
@@ -124,21 +127,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for app.TestUserSpendingAPI" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Proektna_zadaca" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;app.TestUserSpendingAPI&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests in app.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Proektna_zadaca" />
       <option name="ENV_FILES" value="" />
@@ -154,13 +142,28 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests in test_app.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Proektna_zadaca" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_app.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
+        <item itemvalue="Python tests.Python tests in test_app.py" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.checkMongoConnection" />
         <item itemvalue="Python tests.Python tests in app.py" />
-        <item itemvalue="Python tests.Python tests for app.TestUserSpendingAPI" />
       </list>
     </recent_temporary>
   </component>
@@ -212,13 +215,22 @@
       <option name="project" value="LOCAL" />
       <updated>1736787069909</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Se dodavaat extension, models test, i checkMongo na Git. Aplikacijata e razviena do povrzuvanje so Telegram">
+      <option name="closed" value="true" />
+      <created>1736967689393</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736967689393</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="second commit" />
     <MESSAGE value="third commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="third commit" />
+    <MESSAGE value="Se dodavaat extension, models test, i checkMongo na Git. Aplikacijata e razviena do povrzuvanje so Telegram" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se dodavaat extension, models test, i checkMongo na Git. Aplikacijata e razviena do povrzuvanje so Telegram" />
   </component>
 </project>

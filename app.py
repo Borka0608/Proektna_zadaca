@@ -23,8 +23,8 @@ with app.app_context():
     db.create_all()
 
 # Telegram Bot Configuration
-TELEGRAM_BOT_TOKEN = 'your_telegram_bot_token_here'
-TELEGRAM_CHAT_ID = 'your_chat_id_here'
+TELEGRAM_BOT_TOKEN = '8103611758:AAHjD5oKMZ_8NVLQhuVeaWSuAvH4GPtMPYI' #your_telegram_bot_token_here
+TELEGRAM_CHAT_ID = '7443955787'
 
 def send_to_telegram(message):
     """
