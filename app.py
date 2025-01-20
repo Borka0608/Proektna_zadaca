@@ -6,11 +6,11 @@ import requests  # To make HTTP requests to Telegram API
 
 app = Flask(__name__)
 
-# Database configuration
+# Database Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users_vouchers.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# MongoDB configuration
+# MongoDB Configuration
 mongo_client = MongoClient("mongodb://localhost:27017/")
 mongo_db = mongo_client["spending_db"]
 mongo_collection = mongo_db["high_spending_users"]
@@ -23,8 +23,9 @@ with app.app_context():
     db.create_all()
 
 # Telegram Bot Configuration
-TELEGRAM_BOT_TOKEN = '8103611758:AAHjD5oKMZ_8NVLQhuVeaWSuAvH4GPtMPYI' #your_telegram_bot_token_here
+TELEGRAM_BOT_TOKEN = '8103611758:AAHjD5oKMZ_8NVLQhuVeaWSuAvH4GPtMPYI'  # your_telegram_bot_token_here
 TELEGRAM_CHAT_ID = '7443955787'
+
 
 def send_to_telegram(message):
     """
@@ -34,6 +35,7 @@ def send_to_telegram(message):
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message}
     response = requests.post(url, json=payload)
     return response.json()
+
 
 # Endpoint: Add New User
 @app.route('/add_user', methods=['POST'])
@@ -55,6 +57,56 @@ def add_user():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
+# Endpoint: Retrieve Total Spending for All Users
+@app.route('/total_spent_all_users', methods=['GET'])
+def total_spent_all_users():
+    try:
+        results = db.session.query(User.user_id, db.func.sum(Spending.money_spent).label('total_spending')) \
+            .join(Spending, Spending.user_id == User.user_id) \
+            .group_by(User.user_id).all()
+
+        total_spendings = [{"user_id": result.user_id, "total_spending": result.total_spending} for result in results]
+        return jsonify({"total_spendings": total_spendings}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+# Endpoint: Retrieve Total Spending for Eligible Users
+@app.route('/eligible_users', methods=['GET'])
+def eligible_users():
+    try:
+        results = db.session.query(User.user_id, db.func.sum(Spending.money_spent).label('total_spending')) \
+            .join(Spending, Spending.user_id == User.user_id) \
+            .group_by(User.user_id).all()
+
+        eligible_users = [{"user_id": result.user_id, "total_spending": result.total_spending}
+                          for result in results if result.total_spending > 1000]
+        return jsonify({"eligible_users": eligible_users}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+# Endpoint: Write Eligible Users to MongoDB
+@app.route('/write_eligible_users_to_mongodb', methods=['POST'])
+def write_eligible_users_to_mongodb():
+    try:
+        response = requests.get("http://localhost:5000/eligible_users")
+
+        if response.status_code == 200:
+            eligible_users = response.json().get("eligible_users", [])
+
+            if not eligible_users:
+                return jsonify({"message": "No eligible users found"}), 404
+
+            mongo_collection.insert_many(eligible_users)
+            return jsonify({"message": "Eligible users' data successfully written to MongoDB"}), 201
+        else:
+            return jsonify({"error": "Failed to fetch eligible users"}), 500
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 # Endpoint: Retrieve Total Spending by User
 @app.route('/total_spent/<int:user_id>', methods=['GET'])
 def get_total_spending(user_id):
@@ -64,6 +116,7 @@ def get_total_spending(user_id):
 
     total_spending = db.session.query(db.func.sum(Spending.money_spent)).filter_by(user_id=user_id).scalar()
     return jsonify({"user_id": user_id, "total_spending": total_spending or 0}), 200
+
 
 # Endpoint: Calculate Average Spending by Age Ranges
 @app.route('/average_spending_by_age', methods=['GET'])
@@ -86,18 +139,16 @@ def average_spending_by_age():
         )
         averages[age_range] = avg_spending or 0
 
-    # Prepare message for Telegram
     message = "📊 Average Spending by Age Range:\n"
     for age_range, avg_spending in averages.items():
         message += f"- {age_range}: ${avg_spending:.2f}\n"
 
-    # Send message to Telegram
     telegram_response = send_to_telegram(message)
-
     return jsonify({
         "average_spending_by_age": averages,
         "telegram_status": telegram_response
     }), 200
+
 
 # Endpoint: Write User Data to MongoDB
 @app.route('/write_to_mongodb', methods=['POST'])
@@ -116,6 +167,7 @@ def write_to_mongodb():
         return jsonify({"message": "Data successfully inserted into MongoDB"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)

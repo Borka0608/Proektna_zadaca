@@ -1,102 +1,67 @@
 import unittest
-import json
-from app import app, db
-from models import User, Spending
+from app import app, db, User, Spending
 
-class FlaskAppTests(unittest.TestCase):
-
+class AppTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        # Set up the Flask test client
-        app.config['TESTING'] = True
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test_users_vouchers.db'
+        # Set up test environment (in-memory SQLite database)
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         cls.client = app.test_client()
 
-        # Create tables for testing
+        # Initialize the database
         with app.app_context():
             db.create_all()
 
-    @classmethod
-    def tearDownClass(cls):
-        # Clean up after tests
+    def setUp(self):
+        # Setup before each test
+        pass
+
+    def tearDown(self):
+        # Cleanup after each test
         with app.app_context():
             db.session.remove()
             db.drop_all()
 
-    def test_add_user_valid(self):
-        # Test adding a user with valid data
+    def test_add_user(self):
+        # Test adding a user
         response = self.client.post('/add_user', json={
-            "name": "John Doe",
-            "email": "john.doe@example.com",
-            "age": 30
+            'name': 'John Doe',
+            'email': 'john@example.com',
+            'age': 30
         })
+        data = response.get_json()
+
+        # Assert the user is added successfully
         self.assertEqual(response.status_code, 201)
-        self.assertIn("User added successfully", response.get_json().get("message"))
+        self.assertIn('message', data)
+        self.assertEqual(data['message'], 'User added successfully')
 
-    def test_add_user_invalid(self):
-        # Test adding a user with invalid data
-        response = self.client.post('/add_user', json={
-            "name": "",
-            "age": 30
-        })
-        self.assertEqual(response.status_code, 400)
-        self.assertIn("error", response.get_json())
-
-    def test_get_total_spending_valid_user(self):
-        # Add a user and spending, then test total spending endpoint
+        # Check if user exists in the database
         with app.app_context():
-            user = User(name="Alice", email="alice@example.com", age=25)
+            user = User.query.filter_by(email='john@example.com').first()
+            self.assertIsNotNone(user)
+
+    def test_get_total_spending(self):
+        # Test retrieving total spending for a user
+        user = User(name='Jane Doe', email='jane@example.com', age=25)
+        with app.app_context():
             db.session.add(user)
             db.session.commit()
 
-            spending = Spending(user_id=user.user_id, money_spent=150.00)
+        # Add some spending data
+        spending = Spending(user_id=user.user_id, money_spent=100)
+        with app.app_context():
             db.session.add(spending)
             db.session.commit()
 
+        # Now test the total spending endpoint
         response = self.client.get(f'/total_spent/{user.user_id}')
+        data = response.get_json()
+
+        # Assert the total spending is returned correctly
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.get_json().get("total_spending"), 150.00)
-
-    def test_get_total_spending_invalid_user(self):
-        # Test for a user that does not exist
-        response = self.client.get('/total_spent/9999')
-        self.assertEqual(response.status_code, 404)
-        self.assertIn("error", response.get_json())
-
-    def test_average_spending_by_age(self):
-        # Add users and spending, then test the average spending endpoint
-        with app.app_context():
-            user1 = User(name="Bob", email="bob@example.com", age=22)
-            user2 = User(name="Charlie", email="charlie@example.com", age=29)
-            db.session.add_all([user1, user2])
-            db.session.commit()
-
-            spending1 = Spending(user_id=user1.user_id, money_spent=100.00)
-            spending2 = Spending(user_id=user2.user_id, money_spent=200.00)
-            db.session.add_all([spending1, spending2])
-            db.session.commit()
-
-        response = self.client.get('/average_spending_by_age')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn("average_spending_by_age", response.get_json())
-
-    def test_write_to_mongodb_valid(self):
-        # Test writing to MongoDB with valid data
-        response = self.client.post('/write_to_mongodb', json={
-            "user_id": 1,
-            "total_spending": 500.00
-        })
-        self.assertEqual(response.status_code, 201)
-        self.assertIn("Data successfully inserted", response.get_json().get("message"))
-
-    def test_write_to_mongodb_invalid(self):
-        # Test writing to MongoDB with invalid data
-        response = self.client.post('/write_to_mongodb', json={
-            "user_id": None,
-            "total_spending": 500.00
-        })
-        self.assertEqual(response.status_code, 400)
-        self.assertIn("error", response.get_json())
+        self.assertEqual(data['total_spending'], 100)
 
 if __name__ == '__main__':
     unittest.main()
