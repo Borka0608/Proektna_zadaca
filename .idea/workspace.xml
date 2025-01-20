@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b93cf116-234e-4ab8-b28a-70a02878995e" name="Changes" comment="aplikacija povrzana so Telegram">
-      <change afterPath="$PROJECT_DIR$/API_requests.py" afterDir="false" />
+    <list default="true" id="b93cf116-234e-4ab8-b28a-70a02878995e" name="Changes" comment="aplikacija 20012025">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/users_vouchers.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/users_vouchers.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_app.py" afterDir="false" />
     </list>
@@ -52,7 +50,10 @@
     "Python tests.Python tests for app.TestUserSpendingAPI.executor": "Run",
     "Python tests.Python tests for app.TestUserSpendingAPI.test_total_spent.executor": "Run",
     "Python tests.Python tests for test_app.AppTestCase.executor": "Run",
+    "Python tests.Python tests for test_app.AppTestCase.test_average_spending_by_age.executor": "Run",
     "Python tests.Python tests for test_app.AppTestCase.test_invalid_data.executor": "Run",
+    "Python tests.Python tests for test_app.FlaskAppTests.executor": "Run",
+    "Python tests.Python tests for test_app.FlaskAppTests.test_average_spending_by_age.executor": "Run",
     "Python tests.Python tests for test_app.MyAppTestCase.test_write_to_mongodb.executor": "Run",
     "Python tests.Python tests for test_app.TestAPI.executor": "Run",
     "Python tests.Python tests for test_app.TestAPI.test_get_total_spending.executor": "Run",
@@ -68,7 +69,7 @@
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.API_requests">
+  <component name="RunManager" selected="Python tests.Python tests for test_app.AppTestCase.test_average_spending_by_age">
     <configuration name="API_requests" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Proektna_zadaca" />
       <option name="ENV_FILES" value="" />
@@ -91,29 +92,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Proektna_zadaca" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_app.AppTestCase" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_app.AppTestCase.test_average_spending_by_age" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Proektna_zadaca" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,11 +103,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_app.AppTestCase&quot;" />
+      <option name="_new_target" value="&quot;test_app.AppTestCase.test_average_spending_by_age&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_app.MyAppTestCase.test_write_to_mongodb" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_app.FlaskAppTests" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Proektna_zadaca" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -139,7 +118,22 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_app.MyAppTestCase.test_write_to_mongodb&quot;" />
+      <option name="_new_target" value="&quot;test_app.FlaskAppTests&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_app.FlaskAppTests.test_average_spending_by_age" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Proektna_zadaca" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_app.FlaskAppTests.test_average_spending_by_age&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -160,11 +154,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.API_requests" />
-        <item itemvalue="Python.app" />
+        <item itemvalue="Python tests.Python tests for test_app.AppTestCase.test_average_spending_by_age" />
+        <item itemvalue="Python tests.Python tests for test_app.FlaskAppTests" />
+        <item itemvalue="Python tests.Python tests for test_app.FlaskAppTests.test_average_spending_by_age" />
         <item itemvalue="Python tests.Python tests in test_app.py" />
-        <item itemvalue="Python tests.Python tests for test_app.MyAppTestCase.test_write_to_mongodb" />
-        <item itemvalue="Python tests.Python tests for test_app.AppTestCase" />
+        <item itemvalue="Python.API_requests" />
       </list>
     </recent_temporary>
   </component>
@@ -232,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737291159104</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="aplikacija 20012025">
+      <option name="closed" value="true" />
+      <created>1737375606892</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1737375606892</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -241,6 +243,7 @@
     <MESSAGE value="third commit" />
     <MESSAGE value="Se dodavaat extension, models test, i checkMongo na Git. Aplikacijata e razviena do povrzuvanje so Telegram" />
     <MESSAGE value="aplikacija povrzana so Telegram" />
-    <option name="LAST_COMMIT_MESSAGE" value="aplikacija povrzana so Telegram" />
+    <MESSAGE value="aplikacija 20012025" />
+    <option name="LAST_COMMIT_MESSAGE" value="aplikacija 20012025" />
   </component>
 </project>
