@@ -1,16 +1,21 @@
 import unittest
+from unittest.mock import MagicMock
 import json
-from app import app, db
+from app import app, db, mongo_client  # Assuming you have mongo_client imported
 from models import User, Spending
 
 class AppTestCase(unittest.TestCase):
     def setUp(self):
         """
-        Setup the Flask test client and initialize the database.
+        Setup the Flask test client and initialize the database with in-memory SQLite.
         """
         self.app = app.test_client()
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users_vouchers.db'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'  # Use in-memory SQLite
         app.config['TESTING'] = True
+
+        # Mock the MongoDB client
+        self.mongo_mock = MagicMock()
+        self.mongo_client = self.mongo_mock  # Replace real mongo_client with mock
 
         # Ensure the database tables exist
         with app.app_context():
@@ -68,6 +73,10 @@ class AppTestCase(unittest.TestCase):
         """
         with app.app_context():
             db.session.remove()
+            db.engine.dispose()  # Close the SQLAlchemy engine connection
+
+        # Reset the MongoDB mock between tests
+        self.mongo_mock.reset_mock()
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()  # This will ensure that all the tests are discovered and run

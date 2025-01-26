@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b93cf116-234e-4ab8-b28a-70a02878995e" name="Changes" comment="aplikacija 20012025">
+    <list default="true" id="b93cf116-234e-4ab8-b28a-70a02878995e" name="Changes" comment="aplikacija so unit tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/instance/users_vouchers.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/users_vouchers.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_app.py" afterDir="false" />
@@ -45,31 +45,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for app.TestUserSpendingAPI.executor": "Run",
-    "Python tests.Python tests for app.TestUserSpendingAPI.test_total_spent.executor": "Run",
-    "Python tests.Python tests for test_app.AppTestCase.executor": "Run",
-    "Python tests.Python tests for test_app.AppTestCase.test_average_spending_by_age.executor": "Run",
-    "Python tests.Python tests for test_app.AppTestCase.test_invalid_data.executor": "Run",
-    "Python tests.Python tests for test_app.FlaskAppTests.executor": "Run",
-    "Python tests.Python tests for test_app.FlaskAppTests.test_average_spending_by_age.executor": "Run",
-    "Python tests.Python tests for test_app.MyAppTestCase.test_write_to_mongodb.executor": "Run",
-    "Python tests.Python tests for test_app.TestAPI.executor": "Run",
-    "Python tests.Python tests for test_app.TestAPI.test_get_total_spending.executor": "Run",
-    "Python tests.Python tests for test_app.TestAPI.test_write_to_mongodb.executor": "Run",
-    "Python tests.Python tests in app.py.executor": "Run",
-    "Python tests.Python tests in test_app.py.executor": "Run",
-    "Python.API_requests.executor": "Run",
-    "Python.app.executor": "Run",
-    "Python.checkMongoConnection.executor": "Run",
-    "Python.test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for app.TestUserSpendingAPI.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for app.TestUserSpendingAPI.test_total_spent.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.AppTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.AppTestCase.test_add_user.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.AppTestCase.test_average_spending_by_age.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.AppTestCase.test_eligible_users.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.AppTestCase.test_get_total_spending.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.AppTestCase.test_invalid_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.FlaskAppTests.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.FlaskAppTests.test_average_spending_by_age.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.MyAppTestCase.test_write_to_mongodb.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.TestAPI.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.TestAPI.test_get_total_spending.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_app.TestAPI.test_write_to_mongodb.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in app.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_app.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.API_requests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.checkMongoConnection.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for test_app.AppTestCase.test_average_spending_by_age">
+}</component>
+  <component name="RunManager" selected="Python.API_requests">
     <configuration name="API_requests" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Proektna_zadaca" />
       <option name="ENV_FILES" value="" />
@@ -92,6 +95,58 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Proektna_zadaca" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_app.AppTestCase" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Proektna_zadaca" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_app.AppTestCase&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_app.AppTestCase.test_add_user" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Proektna_zadaca" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_app.AppTestCase.test_add_user&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for test_app.AppTestCase.test_average_spending_by_age" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Proektna_zadaca" />
       <option name="ENV_FILES" value="" />
@@ -107,58 +162,13 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_app.FlaskAppTests" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Proektna_zadaca" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_app.FlaskAppTests&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_app.FlaskAppTests.test_average_spending_by_age" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Proektna_zadaca" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_app.FlaskAppTests.test_average_spending_by_age&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests in test_app.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Proektna_zadaca" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_app.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_app.AppTestCase.test_average_spending_by_age" />
-        <item itemvalue="Python tests.Python tests for test_app.FlaskAppTests" />
-        <item itemvalue="Python tests.Python tests for test_app.FlaskAppTests.test_average_spending_by_age" />
-        <item itemvalue="Python tests.Python tests in test_app.py" />
         <item itemvalue="Python.API_requests" />
+        <item itemvalue="Python.app" />
+        <item itemvalue="Python tests.Python tests for test_app.AppTestCase" />
+        <item itemvalue="Python tests.Python tests for test_app.AppTestCase.test_add_user" />
+        <item itemvalue="Python tests.Python tests for test_app.AppTestCase.test_average_spending_by_age" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737375606892</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="aplikacija so unit tests">
+      <option name="closed" value="true" />
+      <created>1737409003011</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1737409003011</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -244,6 +262,7 @@
     <MESSAGE value="Se dodavaat extension, models test, i checkMongo na Git. Aplikacijata e razviena do povrzuvanje so Telegram" />
     <MESSAGE value="aplikacija povrzana so Telegram" />
     <MESSAGE value="aplikacija 20012025" />
-    <option name="LAST_COMMIT_MESSAGE" value="aplikacija 20012025" />
+    <MESSAGE value="aplikacija so unit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="aplikacija so unit tests" />
   </component>
 </project>
